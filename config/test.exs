@@ -15,7 +15,7 @@ config :tasx, TasxCore.Repo,
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :tasx, TasxCoreWeb.Endpoint,
+config :tasx, TasxWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "tAHi9T6r2JgyR9BLSwqdCc0Y89Mfxkf/Gwayv4pwWmvnHJ5xxSK+6QotM6YOtgzP",
   server: false

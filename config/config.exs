@@ -13,11 +13,11 @@ config :tasx,
   generators: [timestamp_type: :utc_datetime, binary_id: true]
 
 # Configure the endpoint
-config :tasx, TasxCoreWeb.Endpoint,
+config :tasx, TasxWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [json: TasxCoreWeb.ErrorJSON],
+    formats: [json: TasxWeb.ErrorJSON],
     layout: false
   ],
   pubsub_server: TasxCore.PubSub,

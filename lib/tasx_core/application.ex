@@ -8,14 +8,14 @@ defmodule TasxCore.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      TasxCoreWeb.Telemetry,
+      TasxWeb.Telemetry,
       TasxCore.Repo,
       {DNSCluster, query: Application.get_env(:tasx, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: TasxCore.PubSub},
       # Start a worker by calling: TasxCore.Worker.start_link(arg)
       # {TasxCore.Worker, arg},
       # Start to serve requests, typically the last entry
-      TasxCoreWeb.Endpoint
+      TasxWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -28,7 +28,7 @@ defmodule TasxCore.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    TasxCoreWeb.Endpoint.config_change(changed, removed)
+    TasxWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

@@ -1,4 +1,4 @@
-defmodule TasxCoreWeb.Endpoint do
+defmodule TasxWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :tasx
 
   # The session will be stored in the cookie and signed,
@@ -24,7 +24,7 @@ defmodule TasxCoreWeb.Endpoint do
     at: "/",
     from: :tasx,
     gzip: not code_reloading?,
-    only: TasxCoreWeb.static_paths(),
+    only: TasxWeb.static_paths(),
     raise_on_missing_only: code_reloading?
 
   # Code reloading can be explicitly enabled under the
@@ -45,5 +45,5 @@ defmodule TasxCoreWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug TasxCoreWeb.Router
+  plug TasxWeb.Router
 end
