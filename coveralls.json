@@ -1,0 +1,24 @@
+{
+  "skip_files": [
+    "test",
+    "lib/tasx_web.ex",
+    "lib/tasx_core.ex",
+    "lib/tasx_core/application.ex",
+    "lib/tasx_core/mailer.ex",
+    "lib/tasx_core/release.ex",
+    "lib/tasx_core/repo.ex",
+    "lib/tasx_web/gettext.ex",
+    "lib/tasx_web/router.ex",
+    "lib/tasx_web/telemetry.ex",
+    "lib/tasx_web/endpoint.ex",
+    "lib/tasx_web/views/error_json.ex",
+    "lib/tasx_web/components"
+  ],
+  "terminal_options": {
+    "file_column_width": 80
+  },
+  "coverage_options": {
+    "treat_no_relevant_lines_as_covered": true,
+    "minimum_coverage": 75
+  }
+}
