@@ -37,6 +37,18 @@ msgstr ""
 msgid "has invalid format"
 msgstr ""
 
+msgid "must have number(s)"
+msgstr ""
+
+msgid "must have lowercase character(s)"
+msgstr ""
+
+msgid "must have uppercase character(s)"
+msgstr ""
+
+msgid "must have special character(s)"
+msgstr ""
+
 ## From Ecto.Changeset.validate_subset/3
 msgid "has an invalid entry"
 msgstr ""
