@@ -23,6 +23,9 @@ config :tasx, TasxWeb.Endpoint,
 # In test we don't send emails
 config :tasx, TasxCore.Mailer, adapter: Swoosh.Adapters.Test
 
+# Only in tests, remove the complexity from the password hashing algorithm
+config :argon2_elixir, t_cost: 1, m_cost: 8
+
 # Disable swoosh api client as it is only required for production adapters
 config :swoosh, :api_client, false
 

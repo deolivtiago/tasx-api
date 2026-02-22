@@ -59,7 +59,12 @@ defmodule TasxCore.MixProject do
       {:dns_cluster, "~> 0.2.0"},
       {:bandit, "~> 1.5"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:excoveralls, "~> 0.18", only: [:dev, :test], runtime: false}
+      {:excoveralls, "~> 0.18", only: [:dev, :test], runtime: false},
+      {:faker_fork, "~> 0.19.1", only: [:dev, :test], runtime: false},
+      {:tz, "~> 0.28"},
+      {:argon2_elixir, "~> 4.1"},
+      {:nimble_totp, "~> 1.0"},
+      {:jose, "~> 1.11"}
     ]
   end
 

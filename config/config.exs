@@ -32,6 +32,9 @@ config :tasx, TasxWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :tasx, TasxCore.Mailer, adapter: Swoosh.Adapters.Local
 
+# Configures the database timezone
+config :elixir, :time_zone_database, Tz.TimeZoneDatabase
+
 # Configure Elixir's Logger
 config :logger, :default_formatter,
   format: "$time $metadata[$level] $message\n",
