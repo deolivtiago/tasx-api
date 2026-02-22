@@ -1,0 +1,81 @@
+name: ci
+
+on:
+  push:
+    branches-ignore: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+    env:
+      MIX_ENV: test
+
+    services:
+      postgres:
+        image: postgres:17
+        ports: ["5432:5432"]
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup elixir
+        uses: erlef/setup-beam@v1
+        with:
+          version-type: strict
+          version-file: .tool-versions
+
+      - name: Restore cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            deps
+            _build
+          key: >-
+            ${{ runner.os }}-${{ steps.beam.outputs.elixir-version }}-${{ steps.beam.outputs.otp-version }}-${{ hashFiles('**/mix.lock') }}
+
+      - name: Get dependencies
+        run: mix deps.get
+
+      - name: Save cache
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            deps
+            _build
+          key: >-
+            ${{ runner.os }}-${{ steps.beam.outputs.elixir-version }}-${{ steps.beam.outputs.otp-version }}-${{ hashFiles('**/mix.lock') }}
+
+      - name: Check unused deps
+        run: mix deps.unlock --check-unused
+
+      - name: Compile code
+        run: mix compile --warnings-as-errors
+
+      - name: Check formatting
+        run: mix format --check-formatted
+
+      - name: Analyze code
+        run: mix credo --strict
+
+      - name: Setup database
+        run: mix setup
+
+      - name: Run tests and check coverage
+        run: mix coveralls --warnings-as-errors
+
+      - name: Update code coverage status
+        run: mix coveralls.github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
