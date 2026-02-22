@@ -1,0 +1,18 @@
+services:
+  db:
+    container_name: db
+    image: postgres:17
+    restart: on-failure:3
+
+    env_file:
+      - path: ./default.env
+      - path: ./.env
+        required: false
+
+    network_mode: host
+
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:
