@@ -7,12 +7,20 @@
 ## Run `mix gettext.extract` to bring this file up to
 ## date. Leave `msgstr`s empty as changing them here has no
 ## effect: edit them in PO (`.po`) files instead.
+
 ## From Ecto.Changeset.cast/4
 msgid "can't be blank"
 msgstr ""
 
 ## From Ecto.Changeset.unique_constraint/3
 msgid "has already been taken"
+msgstr ""
+
+## From Ecto.Changeset.foreign_key_constraint/3
+msgid "does not exist"
+msgstr ""
+
+msgid "can't be deleted"
 msgstr ""
 
 ## From Ecto.Changeset.put_change/3
@@ -106,4 +114,8 @@ msgid "must be greater than or equal to %{number}"
 msgstr ""
 
 msgid "must be equal to %{number}"
+msgstr ""
+
+## From Ecto.Changeset.add_error/3
+msgid "not found"
 msgstr ""
