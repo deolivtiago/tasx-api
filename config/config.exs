@@ -32,6 +32,14 @@ config :tasx, TasxWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :tasx, TasxCore.Mailer, adapter: Swoosh.Adapters.Local
 
+# Configures a Json Web Token secret key
+config :tasx, TasxCore.JsonWebToken,
+  jwt_secret_key:
+    System.get_env(
+      "JWT_SECRET_KEY",
+      "dE6p4Qy998PcdoICNTnGUe3gJQCwShFcApo2as5su2evp+fT90Z2xUgHkQoju7G+"
+    )
+
 # Configures the database timezone
 config :elixir, :time_zone_database, Tz.TimeZoneDatabase
 
