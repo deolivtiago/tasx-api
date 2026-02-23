@@ -133,3 +133,6 @@ msgstr ""
 ## From Ecto.Changeset.add_error/3
 msgid "not found"
 msgstr ""
+
+msgid "couldn't be sent"
+msgstr ""
