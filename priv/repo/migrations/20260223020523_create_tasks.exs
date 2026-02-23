@@ -21,6 +21,6 @@ defmodule TasxCore.Repo.Migrations.CreateTasks do
       timestamps(type: :utc_datetime)
     end
 
-    create index(:tokens, [:user_id])
+    create index(:tasks, [:user_id])
   end
 end
