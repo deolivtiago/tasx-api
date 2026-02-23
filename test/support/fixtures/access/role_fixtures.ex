@@ -21,7 +21,7 @@ defmodule TasxCore.Access.RoleFixtures do
 
     Map.new()
     |> Map.put(:id, id)
-    |> Map.put(:permissions, [])
+    |> Map.put(:permissions, ["GET:api/auth/user-info"])
     |> Map.put(:inserted_at, DateTime.add(DateTime.utc_now(), Enum.random(-90..-1), :day))
     |> Map.put(:updated_at, DateTime.add(DateTime.utc_now(), Enum.random(-90..-1), :day))
     |> Map.merge(attrs)
