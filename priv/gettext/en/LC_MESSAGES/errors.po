@@ -136,3 +136,9 @@ msgstr ""
 
 msgid "couldn't be sent"
 msgstr ""
+
+msgid "must be verified"
+msgstr ""
+
+msgid "invalid credentials"
+msgstr ""
