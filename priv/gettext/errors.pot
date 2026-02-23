@@ -140,3 +140,6 @@ msgstr ""
 
 msgid "invalid credentials"
 msgstr ""
+
+msgid "can't be signed"
+msgstr ""
