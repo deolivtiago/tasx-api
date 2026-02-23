@@ -2,6 +2,7 @@ defmodule TasxCore.Access.RolesTest do
   use TasxCore.DataCase, async: true
 
   import TasxCore.Access.RoleFixtures
+  import TasxCore.Access.UserFixtures
 
   alias Ecto.Changeset
   alias TasxCore.Access.Roles
@@ -102,6 +103,16 @@ defmodule TasxCore.Access.RolesTest do
 
       assert %Changeset{valid?: false} = changeset
       assert Enum.member?(errors.id, "not found")
+    end
+
+    test "error when role can't be deleted", %{role: role} do
+      Map.new() |> Map.put(:role_id, role.id) |> insert_user()
+
+      assert {:error, changeset} = Roles.delete_role(role)
+      errors = errors_on(changeset)
+
+      assert %Changeset{valid?: false} = changeset
+      assert Enum.member?(errors.id, "can't be deleted")
     end
   end
 
